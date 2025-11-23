@@ -1,26 +1,61 @@
 import React from 'react';
-import { assets } from '../assets/asset/assets';
+import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   return (
     <>
-        <div className='flex flex-col sm:flex-row border border-gray-400'>
-            <div className='w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0'>
-                <div className='text-[#414141]'>
-                    <div className='flex items-center gap-2'>
-                        <p className='w-8 md:w-11 h-[2px] bg-[#414141]'></p>
-                        <p className=" font-medium text-sm md:text-base">OUR BESTSELLERS</p>
-                    </div>
-                    <h1 className="prata-regular text-3xl sm:py-3 lg:text-5xl leading-relaxed">Latest Arrivals</h1>
-                    <div className="flex items-center gap-2">
-                        <p className="font-semibold text-sm md:text-base">SHOP NOW</p>
-                        <p className="w-8 md:w-11 h-[1px] bg-[#414141]"></p>
-                    </div>
-                </div> 
+        <div className='relative min-h-screen bg-[#0a0a0a] flex items-center overflow-hidden'>
+            {/* Background Image with Overlay */}
+            <div className='absolute inset-0'>
+                <img 
+                    src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1920&h=1080&fit=crop" 
+                    alt="Featured Artwork" 
+                    className='w-full h-full object-cover opacity-40'
+                />
+                <div className='absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent'></div>
             </div>
-            <div className='w-full sm:w-1/2'>
-                <img src={assets.hero_img} alt="" className='w-full h-full object-cover'/>
+
+            <div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
+                <div className='max-w-3xl py-32 lg:py-40'>
+                    {/* Small Label */}
+                    <div className='mb-8'>
+                        <span className='inline-block text-[#d4a574] text-xs tracking-[0.3em] font-light uppercase border border-[#d4a574]/30 px-4 py-2'>
+                            Featured Collection
+                        </span>
+                    </div>
+
+                    {/* Main Heading */}
+                    <h1 className='font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white font-light leading-[1.1] mb-8'>
+                        Timeless
+                        <span className='block mt-2'>Artistry</span>
+                    </h1>
+
+                    {/* Description */}
+                    <p className='text-lg sm:text-xl text-white/60 font-light leading-relaxed mb-12 max-w-xl'>
+                        Discover exceptional contemporary and classical paintings from renowned artists worldwide.
+                    </p>
+
+                    {/* CTA Buttons */}
+                    <div className="flex flex-col sm:flex-row items-start gap-6">
+                        <button className="group relative px-10 py-4 bg-transparent border border-[#d4a574] text-white font-light text-sm tracking-wider overflow-hidden transition-all duration-500 hover:border-white">
+                            <span className="relative z-10 flex items-center gap-3">
+                                EXPLORE GALLERY
+                                <ArrowRight className='w-4 h-4 group-hover:translate-x-1 transition-transform duration-300' />
+                            </span>
+                            <div className="absolute inset-0 bg-[#d4a574] -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                        </button>
+
+                        <button className="group px-10 py-4 bg-transparent text-white/80 hover:text-white font-light text-sm tracking-wider transition-all duration-300 flex items-center gap-3">
+                            VIEW COLLECTIONS
+                            <div className='w-8 h-[1px] bg-white/50 group-hover:w-12 transition-all duration-300'></div>
+                        </button>
+                    </div>
+                </div>
             </div>
+
+            {/* Decorative Elements */}
+            <div className='absolute top-1/4 right-12 w-px h-32 bg-gradient-to-b from-transparent via-white/10 to-transparent hidden xl:block'></div>
+            <div className='absolute bottom-1/4 right-12 w-px h-32 bg-gradient-to-b from-transparent via-white/10 to-transparent hidden xl:block'></div>
         </div>
     </>
   )

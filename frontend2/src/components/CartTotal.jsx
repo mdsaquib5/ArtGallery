@@ -1,30 +1,52 @@
+// CartTotal.jsx
 import React, { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
-import Title from './Title';
 
 const CartTotal = () => {
     const { getCartAmount, currency, deliveryFee } = useContext(ShopContext); 
   return (
     <>
-        <div className='w-full'>
-            <div className='text-2xl'>
-                <Title text1="YOUR" text2="TOTALS" />
+        <div className='w-full bg-white border border-black/10 p-6 lg:p-8'>
+            {/* Header */}
+            <div className='mb-6'>
+                <div className='flex items-center gap-4 mb-4'>
+                    <div className='w-8 h-[1px] bg-gradient-to-r from-transparent to-black/20'></div>
+                    <div className='w-1 h-1 bg-[#d4a574] rotate-45'></div>
+                </div>
+                <h2 className='text-xl font-serif font-light text-black tracking-wide'>
+                    Order Summary
+                </h2>
             </div>
-            <div className='flex flex-col gap-2 mt-2 text-sm'>
-                <div className="flex justify-between">
-                    <p>Subtotal</p>
-                    <p>{currency}{getCartAmount()}.00</p>
+
+            {/* Price Breakdown */}
+            <div className='space-y-4'>
+                {/* Subtotal */}
+                <div className="flex justify-between items-center">
+                    <p className='text-sm text-black/60 font-light'>Subtotal</p>
+                    <p className='text-sm font-light text-black'>{currency}{getCartAmount()}.00</p>
                 </div>
-                <hr className='border-gray-200' />
-                <div className="flex justify-between">
-                    <p>Shipping Fee</p>
-                    <p>{currency}{deliveryFee}.00</p>
+                
+                <div className='h-[1px] bg-black/5'></div>
+                
+                {/* Shipping Fee */}
+                <div className="flex justify-between items-center">
+                    <p className='text-sm text-black/60 font-light'>Shipping Fee</p>
+                    <p className='text-sm font-light text-black'>{currency}{deliveryFee}.00</p>
                 </div>
-                <hr className='border-gray-200' />
-                <div className="flex justify-between">
-                    <p>Total</p>
-                    <p>{currency}{getCartAmount() === 0 ? 0 : getCartAmount() + deliveryFee}.00</p>
+                
+                <div className='h-[1px] bg-black/5'></div>
+                
+                {/* Total */}
+                <div className="flex justify-between items-center pt-2">
+                    <p className='text-base font-serif text-black tracking-wide'>Total</p>
+                    <p className='text-2xl font-serif text-black'>{currency}{getCartAmount() === 0 ? 0 : getCartAmount() + deliveryFee}.00</p>
                 </div>
+            </div>
+
+            {/* Decorative Line */}
+            <div className='flex items-center gap-4 mt-6'>
+                <div className='w-1 h-1 bg-[#d4a574] rotate-45'></div>
+                <div className='flex-1 h-[1px] bg-gradient-to-r from-black/20 to-transparent'></div>
             </div>
         </div> 
     </>

@@ -1,18 +1,18 @@
+// Collection.jsx
 import React, { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
-import { assets } from '../assets/asset/assets';
-import Title from '../components/Title';
 import ProductItem from '../components/ProductItem';
+import { Filter, X, ChevronDown, SlidersHorizontal } from 'lucide-react';
 
 const Collection = () => {
-    const {products, search, showSearch} = useContext(ShopContext);
+    const { products, search, showSearch } = useContext(ShopContext);
     // This state is use to show/hide filter sidebar
     const [showFilters, setShowFilters] = useState(false);
     // This state is use to store filtered products
     const [filterProducts, setFilterProducts] = useState([]);
 
-    // These two states is use to store filter sectection data : 
+    // These two states is use to store filter section data : 
     const [category, setCategory] = useState([]);
     const [subCategory, setSubCategory] = useState([]);
 
@@ -20,19 +20,19 @@ const Collection = () => {
     const [sortType, setSortType] = useState('relavent');
 
     // This function is use to toggle category
-    const toggleCategory = (e) =>{
+    const toggleCategory = (e) => {
         if (category.includes(e.target.value)) {
             setCategory((prev) => prev.filter((item) => item !== e.target.value));
-        }else{
+        } else {
             setCategory((prev) => [...prev, e.target.value]);
         }
     }
 
     // This function is use to toggle subcategory
-    const toggleSubCategory = (e) =>{
+    const toggleSubCategory = (e) => {
         if (subCategory.includes(e.target.value)) {
             setSubCategory((prev) => prev.filter((item) => item !== e.target.value));
-        }else{
+        } else {
             setSubCategory((prev) => [...prev, e.target.value]);
         }
     }
@@ -60,100 +60,177 @@ const Collection = () => {
         setFilterProducts(productsCopy);
     }
 
-
-    const sortProducts = () =>{
+    const sortProducts = () => {
         // Copying filtered products array
         let fpCopy = filterProducts.slice();
         // Sorting products
-        switch(sortType){
+        switch (sortType) {
             case 'low-high':
                 setFilterProducts(fpCopy.sort((a, b) => a.price - b.price));
-            break;
+                break;
             case 'high-low':
                 setFilterProducts(fpCopy.sort((a, b) => b.price - a.price));
-            break;
+                break;
             default:
                 applyFilter();
-            break;
+                break;
         }
     }
 
     // This useEffect is use to apply filter
     useEffect(() => {
-      applyFilter();
+        applyFilter();
     }, [category, subCategory, search, showSearch, products]);
-    
+
     // This useEffect is use to sort products
     useEffect(() => {
-      sortProducts();
+        sortProducts();
     }, [sortType]);
-    
 
-    // This useEffect is use to log category and subcategory
-    // useEffect(() => {
-    //   console.log(category, subCategory);
-    // }, [category, subCategory]);
+    return (
+        <>
 
-  return (
-    <>
-      <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t border-gray-200'>
-        {/* Filter SideBar */}
-        <div className='min-w-60'>
-          <p className='my-2 text-xl flex items-center cursor-pointer gap-2' onClick={() => setShowFilters(!showFilters)}>Filters
-            <img src={assets.dropdown_icon} alt="" className={`h-3 sm:hidden ${showFilters ? 'rotate-90' : ''}`} />
-          </p>
-          <div className={`border border-gray-300 pl-5 py-3 mt-6 sm:block ${showFilters ? '' : 'hidden'}`}>
-            <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
-            <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
-                <p className='flex gap-2'>
-                    <input type="checkbox" className='w-3' value={'Men'} onChange={toggleCategory}/> Men
-                </p>
-                <p className='flex gap-2'>
-                    <input type="checkbox" className='w-3' value={'Women'} onChange={toggleCategory}/> Women
-                </p>
-                <p className='flex gap-2'>
-                    <input type="checkbox" className='w-3' value={'Kids'} onChange={toggleCategory}/> Kids
-                </p>
+            {/* Collection Content */}
+            <div className='py-16 sm:py-24 lg:py-32 bg-[#f5f1e8]'>
+                <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+                    <div className='flex flex-col lg:flex-row gap-8 lg:gap-12'>
+                        {/* Filter Sidebar */}
+                        <div className='lg:w-64 flex-shrink-0'>
+                            {/* Mobile Filter Toggle */}
+                            <button
+                                onClick={() => setShowFilters(!showFilters)}
+                                className='lg:hidden w-full flex items-center justify-between px-4 py-3 bg-white border border-black/10 mb-4'
+                            >
+                                <span className='flex items-center gap-2 font-light text-black'>
+                                    <SlidersHorizontal className='w-4 h-4' />
+                                    Filters
+                                </span>
+                                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${showFilters ? 'rotate-180' : ''}`} />
+                            </button>
+
+                            {/* Filters */}
+                            <div className={`space-y-6 ${showFilters ? 'block' : 'hidden lg:block'}`}>
+                                {/* Category Filter */}
+                                <div className='bg-white border border-black/10 p-6'>
+                                    <h3 className='text-sm font-light text-black tracking-[0.2em] uppercase mb-4'>
+                                        Categories
+                                    </h3>
+                                    <div className='space-y-3'>
+                                        {['Abstract', 'Landscape', 'Portrait', 'Contemporary'].map((cat) => (
+                                            <label key={cat} className='flex items-center gap-3 cursor-pointer group'>
+                                                <input
+                                                    type="checkbox"
+                                                    value={cat}
+                                                    onChange={toggleCategory}
+                                                    className='w-4 h-4 border border-black/20 checked:bg-[#d4a574] checked:border-[#d4a574] cursor-pointer'
+                                                />
+                                                <span className='text-sm font-light text-black/70 group-hover:text-black transition-colors duration-200'>
+                                                    {cat}
+                                                </span>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Style Filter */}
+                                <div className='bg-white border border-black/10 p-6'>
+                                    <h3 className='text-sm font-light text-black tracking-[0.2em] uppercase mb-4'>
+                                        Style
+                                    </h3>
+                                    <div className='space-y-3'>
+                                        {['Modern', 'Traditional', 'Minimalist', 'Impressionist'].map((style) => (
+                                            <label key={style} className='flex items-center gap-3 cursor-pointer group'>
+                                                <input
+                                                    type="checkbox"
+                                                    value={style}
+                                                    onChange={toggleSubCategory}
+                                                    className='w-4 h-4 border border-black/20 checked:bg-[#d4a574] checked:border-[#d4a574] cursor-pointer'
+                                                />
+                                                <span className='text-sm font-light text-black/70 group-hover:text-black transition-colors duration-200'>
+                                                    {style}
+                                                </span>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Clear Filters */}
+                                {(category.length > 0 || subCategory.length > 0) && (
+                                    <button
+                                        onClick={() => {
+                                            setCategory([]);
+                                            setSubCategory([]);
+                                        }}
+                                        className='w-full px-4 py-3 border border-black/20 hover:border-[#d4a574] text-black hover:text-[#d4a574] font-light text-sm tracking-wider transition-all duration-300 flex items-center justify-center gap-2'
+                                    >
+                                        <X className='w-4 h-4' />
+                                        <span>CLEAR FILTERS</span>
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Products Grid */}
+                        <div className='flex-1'>
+                            {/* Header with Sort */}
+                            <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8'>
+                                <div>
+                                    <h2 className='text-2xl font-serif font-light text-black mb-2'>
+                                        All Artworks
+                                    </h2>
+                                    <p className='text-sm text-black/60 font-light'>
+                                        {filterProducts.length} {filterProducts.length === 1 ? 'piece' : 'pieces'} available
+                                    </p>
+                                </div>
+
+                                {/* Sort Dropdown */}
+                                <div className='relative'>
+                                    <select
+                                        onChange={(e) => setSortType(e.target.value)}
+                                        className='appearance-none bg-white border border-black/10 focus:border-[#d4a574] pl-4 pr-10 py-3 text-sm font-light text-black outline-none cursor-pointer transition-colors duration-300'
+                                    >
+                                        <option value="relavent">Sort by: Relevant</option>
+                                        <option value="low-high">Price: Low to High</option>
+                                        <option value="high-low">Price: High to Low</option>
+                                    </select>
+                                    <ChevronDown className='absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/60 pointer-events-none' />
+                                </div>
+                            </div>
+
+                            {/* Products Grid */}
+                            {filterProducts.length > 0 ? (
+                                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'>
+                                    {filterProducts.map((item, index) => (
+                                        <ProductItem key={index} item={item} theme="light" />
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className='bg-white border border-black/10 py-20 text-center'>
+                                    <Filter className='w-16 h-16 text-black/20 mx-auto mb-6' />
+                                    <h3 className='text-2xl font-serif font-light text-black mb-4'>
+                                        No Artworks Found
+                                    </h3>
+                                    <p className='text-sm text-black/60 font-light mb-8'>
+                                        Try adjusting your filters or search criteria
+                                    </p>
+                                    <button
+                                        onClick={() => {
+                                            setCategory([]);
+                                            setSubCategory([]);
+                                        }}
+                                        className='inline-flex items-center gap-3 px-8 py-4 bg-black hover:bg-[#1a1a1a] text-white font-light text-sm tracking-[0.2em] transition-all duration-300'
+                                    >
+                                        <X className='w-4 h-4' />
+                                        <span>CLEAR FILTERS</span>
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div className={`border border-gray-300 pl-5 py-3 my-5 sm:block ${showFilters ? '' : 'hidden'}`}>
-            <p className='mb-3 text-sm font-medium'>Type</p>
-            <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
-                <p className='flex gap-2'>
-                    <input type="checkbox" className='w-3' value={'Topwear'} onChange={toggleSubCategory}/> Topwear
-                </p>
-                <p className='flex gap-2'>
-                    <input type="checkbox" className='w-3' value={'Bottomwear'} onChange={toggleSubCategory}/> Bottomwear
-                </p>
-                <p className='flex gap-2'>
-                    <input type="checkbox" className='w-3' value={'Winterwear'} onChange={toggleSubCategory}/> Winterwear
-                </p>
-            </div>
-          </div>
-        </div>
-        {/* Filter Result Shown Products */}
-        <div className='flex-1'>
-            <div className='flex justify-between text-base sm:text-2xl mb-4'>
-                <Title text1="All" text2="COLLECTIONS" />
-                {/* Products Sorting */}
-                <select onChange={(e) => setSortType(e.target.value)} className='border-2 border-gray-300 text-sm px-2'>
-                    <option value="relavent">Sort by: Relevant</option>
-                    <option value="low-high">Sort by: Low to High</option>
-                    <option value="high-low">Sort by: High to Low</option>
-                </select>
-            </div>
-            {/* Map Products */}
-            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
-                {
-                    filterProducts.map( (item, index) => (
-                        <ProductItem key={index} item={item} />
-                    ))
-                }
-            </div> 
-        </div>
-      </div> 
-    </>
-  )
+        </>
+    )
 }
 
 export default Collection;

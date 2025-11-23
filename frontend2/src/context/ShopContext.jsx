@@ -128,6 +128,8 @@ const ShopContextProvider = (props) => {
         for (const items in cartItems) {
             // Looping through size
             let itemInfo = products.find((item) => item._id === items);
+            // Skip if product not found
+            if (!itemInfo) continue;
             // Looping through quantity
             for (const item in cartItems[items]) {
                 try {
@@ -137,7 +139,7 @@ const ShopContextProvider = (props) => {
                         totalAmount += cartItems[items][item] * itemInfo.price;
                     }
                 } catch (error) {
-                    toast.error("Something went wrong");
+                    console.error("Error calculating cart amount:", error);
                 }
             }
         }

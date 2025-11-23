@@ -42,18 +42,6 @@ const addProduct = async (req, res) => {
             images[img] = req.files[img][0];
         });
 
-        // Log the product data
-        // console.log('Product data received:', {
-        //     name,
-        //     description,
-        //     price,
-        //     category,
-        //     subCategory: subCategory || 'N/A',
-        //     sizes: sizes || 'N/A',
-        //     bestseller: bestseller || false,
-        //     images: Object.keys(images).map(key => images[key].originalname)
-        // });
-
         // Upload each image to Cloudinary
         const imageUploads = Object.values(images).map(async (file) => {
             try {
