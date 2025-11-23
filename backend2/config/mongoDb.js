@@ -6,7 +6,7 @@ const connectDB = async () => {
         console.log('MongoDB Connected');
     });
 
-   await mongoose.connect(`${process.env.MONGODB_URI}/foreverMern`)
+   await mongoose.connect(`${process.env.MONGODB_URI}/gallery`)
 }
 
 export default connectDB;

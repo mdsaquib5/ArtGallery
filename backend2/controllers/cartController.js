@@ -67,8 +67,14 @@ const getUserCart = async (req, res) => {
         const {userId} = req.body;
         // find the user
         const userData = await userModel.findById(userId);
+        
+        // Check if user exists
+        if (!userData) {
+            return res.status(404).json({success: false, message: "User not found"});
+        }
+        
         // find the user cart
-        const cartData = await userData.cartData;
+        const cartData = userData.cartData || {};
 
         return res.status(200).json({success: true, cartData});
     } catch (error) {
