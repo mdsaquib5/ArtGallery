@@ -15,7 +15,6 @@ const BestSeller = () => {
     return (
         <>
             <div className='my-10'>
-                <div>Hi Check Branches</div>
                 <div className="text-center py-8 text-3xl">
                     <Title text1="BEST" text2="SELLER"/>
                     <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the.</p>
