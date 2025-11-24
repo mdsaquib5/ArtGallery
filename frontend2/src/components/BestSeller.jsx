@@ -13,7 +13,7 @@ const BestSeller = () => {
         setBestSeller(bestProduct.slice(0, 3));
     }, [products])
 
-    console.log("Env is", import.meta.env.VITE_BACKEND_URL);
+    // console.log("Env is", import.meta.env.VITE_BACKEND_URL);
 
     return (
         <>
