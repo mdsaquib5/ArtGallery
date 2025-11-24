@@ -15,23 +15,15 @@ const app = express();
 // Port
 const port = process.env.PORT || 4000;
 
-// Connect to Cloudinary (only needs to run once)
+// Connect to MongoDB
+connectDB();
+
+// Connect to Cloudinary
 connectCloudinary();
 
 // Middleware
 app.use(express.json());
 app.use(cors());
-
-// Middleware to ensure DB connection before each request (for Vercel serverless)
-app.use(async (req, res, next) => {
-    try {
-        await connectDB();
-        next();
-    } catch (error) {
-        console.error('Database connection failed:', error);
-        res.status(503).json({ success: false, message: 'Database connection failed' });
-    }
-});
 
 // Api ends points
 app.get("/", (req, res) => {
@@ -57,6 +49,3 @@ app.use("/api/order", orderRouter);
 app.listen(port, () => {
     console.log(`Server is Running on Port http://localhost:${port}`);
 });
-
-// Export for Vercel serverless
-export default app;
