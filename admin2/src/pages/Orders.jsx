@@ -60,7 +60,7 @@ const Orders = ({token}) => {
       <div className='p-6 lg:p-8'>
         <div className='max-w-7xl mx-auto'>
             {/* Page Header */}
-            <div className='mb-8'>
+            <div className='mb-12 mt-2'>
                 <div className='flex items-center gap-4 mb-6'>
                     <div className='w-12 h-[1px] bg-gradient-to-r from-transparent to-black/20'></div>
                     <div className='w-1 h-1 bg-[#d4a574] rotate-45'></div>

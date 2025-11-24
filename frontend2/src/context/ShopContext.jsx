@@ -9,6 +9,7 @@ export const ShopContext = createContext();
 
 // This component is use to provide context to the app
 const ShopContextProvider = (props) => {
+    console.log("backendUrl" ,backendUrl);
     // This state is use to store currency
     const currency = "₹";
     // This state is use to store delivery fee

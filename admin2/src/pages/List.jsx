@@ -57,7 +57,7 @@ const List = ({ token }) => {
             <div>
                 <div className='mt-16'>
                     {/* Page Header */}
-                    <div className='mb-8'>
+                    <div className='mb-12'>
 
                         <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4'>
                             <div>

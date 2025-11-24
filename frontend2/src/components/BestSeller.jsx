@@ -13,6 +13,8 @@ const BestSeller = () => {
         setBestSeller(bestProduct.slice(0, 3));
     }, [products])
 
+    console.log("Env is", import.meta.env.VITE_API_URL);
+
     return (
         <>
             <div className='py-24 sm:py-32 lg:py-40 bg-[#ede8df] relative overflow-hidden'>
