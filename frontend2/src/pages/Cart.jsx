@@ -168,7 +168,7 @@ const Cart = () => {
                                                         {/* Remove Button */}
                                                         <button 
                                                             onClick={() => updateQuantity(item._id, item.size, 0)}
-                                                            className='group p-2 border border-black/10 hover:border-red-500 hover:bg-red-50 transition-all duration-300'
+                                                            className='group p-2 cursor-pointer border border-black/10 hover:border-red-500 hover:bg-red-50 transition-all duration-300'
                                                             title='Remove from cart'
                                                         >
                                                             <Trash2 className='w-5 h-5 text-black/40 group-hover:text-red-500 transition-colors duration-300' />
@@ -190,7 +190,7 @@ const Cart = () => {
                                     {/* Checkout Button */}
                                     <button 
                                         onClick={() => navigate('/place-order')}
-                                        className='w-full py-4 bg-black hover:bg-[#1a1a1a] text-white font-light text-sm tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-3'
+                                        className='w-full py-4 bg-black cursor-pointer hover:bg-[#1a1a1a] text-white font-light text-sm tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-3'
                                     >
                                         <span>PROCEED TO CHECKOUT</span>
                                         <ArrowRight className='w-4 h-4' />
@@ -199,7 +199,7 @@ const Cart = () => {
                                     {/* Continue Shopping Link */}
                                     <button 
                                         onClick={() => navigate('/collection')}
-                                        className='w-full py-4 border border-black/20 hover:border-[#d4a574] text-black hover:text-[#d4a574] font-light text-sm tracking-wider transition-all duration-300'
+                                        className='w-full py-4 cursor-pointer border border-black/20 hover:border-[#d4a574] text-black hover:text-[#d4a574] font-light text-sm tracking-wider transition-all duration-300'
                                     >
                                         CONTINUE SHOPPING
                                     </button>

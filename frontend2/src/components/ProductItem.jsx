@@ -65,7 +65,7 @@ const ProductItem = ({item, theme = "dark"}) => {
             {/* Buy Now Button - Appears on hover */}
             <div className='absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500'>
                 <Link to={`/product/${item._id}`}>
-                    <button className="w-full bg-[#d4a574] hover:bg-[#c9a068] text-black py-4 font-light text-sm tracking-[0.2em] transition-all duration-300">
+                    <button className="w-full cursor-pointer bg-[#d4a574] hover:bg-[#c9a068] text-black py-4 font-light text-sm tracking-[0.2em] transition-all duration-300">
                         Buy Now
                     </button>
                 </Link>

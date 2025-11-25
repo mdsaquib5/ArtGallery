@@ -1,8 +1,8 @@
 // Collections.jsx
 import React, { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
-import Title from './Title';
 import ProductItem from './ProductItem';
+import { Link } from 'react-router-dom';
 
 const Collections = () => {
 
@@ -61,15 +61,15 @@ const Collections = () => {
 
                 {/* View All Button */}
                 <div className='mt-20 text-center'>
-                        <div className='inline-block'>
-                            <button className='group relative px-16 py-5 bg-black hover:bg-[#1a1a1a] border border-black text-white font-light text-sm tracking-[0.2em] transition-all duration-500'>
+                        <div className='block'>
+                            <Link to='/collection' className='inline-block group relative px-16 py-5 bg-black hover:bg-[#1a1a1a] border border-black text-white font-light text-sm tracking-[0.2em] transition-all duration-500'>
                                 <span className="relative z-10 flex items-center gap-4">
                                     EXPLORE COLLECTION
                                     <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                     </svg>
                                 </span>
-                            </button>
+                            </Link>
                         </div>
                     </div>
             </div>

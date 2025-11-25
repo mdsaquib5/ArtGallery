@@ -26,7 +26,7 @@ const Product = () => {
         if (product) {
             // Set product data
             setProductData(product);
-            console.log("Product is", product);
+            // console.log("Product is", product);
             // Set product image
             setImage(product.image[0]);
         }
@@ -153,7 +153,7 @@ const Product = () => {
                         {/* Add to Cart Button */}
                         <button 
                             onClick={() => addToCart(productData._id, size)}
-                            className='w-full py-4 bg-black hover:bg-[#1a1a1a] text-white font-light text-sm tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-3'
+                            className='w-full py-4 bg-black hover:bg-[#1a1a1a] cursor-pointer text-white font-light text-sm tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-3'
                         >
                             <ShoppingCart className='w-5 h-5' />
                             <span>ADD TO COLLECTION</span>

@@ -30,7 +30,7 @@ const List = ({ token }) => {
     }, []);
 
     const removeProduct = async (id) => {
-        console.log("Remove product id", id);
+        // console.log("Remove product id", id);
         try {
             const response = await axios.post(`http://localhost:4000/api/product/remove`, { headers: { token }, id });
             if (response.data.success) {

@@ -44,7 +44,7 @@ const Add = ({ token }) => {
                 headers: { token }
             });
             toast.success('Product added successfully');
-            console.log(response.data);
+            // console.log(response.data);
 
             // Reset form
             setName('');

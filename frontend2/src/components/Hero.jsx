@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
@@ -37,18 +37,13 @@ const Hero = () => {
 
                     {/* CTA Buttons */}
                     <div className="flex flex-col sm:flex-row items-start gap-6">
-                        <button className="group relative px-10 py-4 bg-transparent border border-[#d4a574] text-white font-light text-sm tracking-wider overflow-hidden transition-all duration-500 hover:border-white">
+                        <Link to='/collection' className="group relative px-10 py-4 bg-transparent border border-[#d4a574] text-white font-light text-sm tracking-wider overflow-hidden transition-all duration-500 hover:border-white">
                             <span className="relative z-10 flex items-center gap-3">
                                 EXPLORE GALLERY
                                 <ArrowRight className='w-4 h-4 group-hover:translate-x-1 transition-transform duration-300' />
                             </span>
                             <div className="absolute inset-0 bg-[#d4a574] -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                        </button>
-
-                        <button className="group px-10 py-4 bg-transparent text-white/80 hover:text-white font-light text-sm tracking-wider transition-all duration-300 flex items-center gap-3">
-                            VIEW COLLECTIONS
-                            <div className='w-8 h-[1px] bg-white/50 group-hover:w-12 transition-all duration-300'></div>
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

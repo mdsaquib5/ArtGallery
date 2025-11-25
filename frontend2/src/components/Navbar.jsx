@@ -32,7 +32,7 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    console.log("token is", token);
+    // console.log("token is", token);
   return (
     <>
         <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -121,7 +121,7 @@ const Navbar = () => {
                         {/* Search Icon */}
                         <button 
                             onClick={()=> setShowSearch(true)} 
-                            className='group p-2 hover:bg-white/5 rounded-full transition-all duration-300'
+                            className='group p-2 cursor-pointer hover:bg-white/5 rounded-full transition-all duration-300'
                             aria-label="Search"
                         >
                             <Search className="w-5 h-5 text-white/80 group-hover:text-white transition-colors duration-300" />
@@ -131,7 +131,7 @@ const Navbar = () => {
                         <div className='group relative'>
                             <button 
                                 onClick={()=> token ? null : navigate('/login')} 
-                                className='p-2 hover:bg-white/5 rounded-full transition-all duration-300'
+                                className='p-2 hover:bg-white/5 cursor-pointer rounded-full transition-all duration-300'
                                 aria-label="Profile"
                             >
                                 <User className="w-5 h-5 text-white/80 group-hover:text-white transition-colors duration-300" />
@@ -142,20 +142,20 @@ const Navbar = () => {
                                 token && (
                                     <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
                                         <div className='flex flex-col w-48 py-3 px-2 bg-[#1a1a1a] border border-white/10 rounded-sm'>
-                                            <button className='flex items-center gap-3 px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 transition-colors duration-200 text-sm font-light text-left'>
+                                            <button className='flex cursor-pointer items-center gap-3 px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 transition-colors duration-200 text-sm font-light text-left'>
                                                 <User className='w-4 h-4' />
                                                 <span>My Profile</span>
                                             </button>
                                             <button 
                                                 onClick={()=> navigate('/orders')} 
-                                                className='flex items-center gap-3 px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 transition-colors duration-200 text-sm font-light text-left'
+                                                className='flex items-center gap-3 cursor-pointer px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 transition-colors duration-200 text-sm font-light text-left'
                                             >
                                                 <ShoppingCart className='w-4 h-4' />
                                                 <span>Orders</span>
                                             </button>
                                             <hr className='my-2 border-white/10' />
                                             <button 
-                                                className='flex items-center gap-3 px-4 py-3 text-white/80 hover:text-[#d4a574] hover:bg-white/5 transition-colors duration-200 text-sm font-light text-left' 
+                                                className='flex items-center gap-3 cursor-pointer px-4 py-3 text-white/80 hover:text-[#d4a574] hover:bg-white/5 transition-colors duration-200 text-sm font-light text-left' 
                                                 onClick={logout}
                                             >
                                                 <span>Logout</span>
@@ -168,7 +168,7 @@ const Navbar = () => {
                         
                         {/* Cart Icon */}
                         <Link to={'/cart'} className='relative group'>
-                            <button className='p-2 hover:bg-white/5 rounded-full transition-all duration-300'>
+                            <button className='p-2 hover:bg-white/5 rounded-full transition-all duration-300 cursor-pointer'>
                                 <ShoppingCart className='w-5 h-5 text-white/80 group-hover:text-white transition-colors duration-300' />
                                 {getCartCount() > 0 && (
                                     <span className='absolute -top-1 -right-1 w-5 h-5 text-center leading-5 bg-[#d4a574] text-black text-xs font-semibold rounded-full'>

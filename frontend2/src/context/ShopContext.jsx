@@ -9,7 +9,6 @@ export const ShopContext = createContext();
 
 // This component is use to provide context to the app
 const ShopContextProvider = (props) => {
-    console.log("backendUrl", backendUrl);
     // This state is use to store currency
     const currency = "₹";
     // This state is use to store delivery fee
@@ -150,7 +149,6 @@ const ShopContextProvider = (props) => {
     const getProductsData = async () => {
         try {
             const response = await axios.get(`${backendUrl}/api/product/list`);
-            console.log("backendUrl is" ,backendUrl);
             // console.log(response.data);
             // setProducts(response.data);
 
@@ -170,7 +168,7 @@ const ShopContextProvider = (props) => {
         try {
             // Sending request to get user cart
             const response = await axios.post(`${backendUrl}/api/cart/get`, {}, {headers: {token: userToken}});
-            console.log(response.data);
+            // console.log(response.data);
             // Setting cart items
             if (response.data.success) {
                 // Setting cart items
