@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-// import {products} from "../assets/asset/assets";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";

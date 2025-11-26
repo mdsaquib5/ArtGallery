@@ -2,8 +2,8 @@
 import React from 'react';
 import { LogOut, Palette } from 'lucide-react';
 
-const Navbar = ({setToken}) => {
-  
+const Navbar = ({ setToken }) => {
+
   return (
     <div className='fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a] border-b border-white/5'>
       <div className='flex items-center justify-between px-6 lg:px-8 h-20'>
@@ -31,9 +31,12 @@ const Navbar = ({setToken}) => {
           </div>
 
           {/* Logout Button */}
-          <button 
-            onClick={() => setToken('')} 
-            className='group px-6 py-3 bg-transparent border border-white/20 hover:border-[#d4a574] text-white font-light text-sm tracking-wider transition-all duration-300 flex items-center gap-2'
+          <button
+            onClick={() => {
+              localStorage.removeItem('token');
+              setToken('');
+            }}
+            className='group px-6 py-3 bg-transparent cursor-pointer border border-white/20 hover:border-[#d4a574] text-white font-light text-sm tracking-wider transition-all duration-300 flex items-center gap-2'
           >
             <LogOut className='w-4 h-4 group-hover:text-[#d4a574] transition-colors duration-300' />
             <span className='hidden sm:inline'>LOGOUT</span>

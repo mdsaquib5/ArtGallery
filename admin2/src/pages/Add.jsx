@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Upload, X, Image as ImageIcon, Save } from 'lucide-react';
+import {backendUrl} from "../config/const";
 
 const Add = ({ token }) => {
     // image states
@@ -40,7 +41,7 @@ const Add = ({ token }) => {
             image4 && formData.append('image4', image4);
 
             // api call
-            const response = await axios.post('http://localhost:4000/api/product/add', formData, {
+            const response = await axios.post(`${backendUrl}/api/product/add`, formData, {
                 headers: { token }
             });
             toast.success('Product added successfully');

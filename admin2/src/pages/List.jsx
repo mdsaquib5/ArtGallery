@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Trash2, Package, Search } from 'lucide-react';
+import {backendUrl} from "../config/const";
 
 export const currency = "₹";
 
@@ -12,7 +13,7 @@ const List = ({ token }) => {
 
     const fetchList = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/product/list');
+            const response = await axios.get(`${backendUrl}/api/product/list`);
             if (response.data.success) {
                 setList(response.data.products);
                 toast.success('Product list fetched successfully');
@@ -32,7 +33,7 @@ const List = ({ token }) => {
     const removeProduct = async (id) => {
         // console.log("Remove product id", id);
         try {
-            const response = await axios.post(`http://localhost:4000/api/product/remove`, { headers: { token }, id });
+            const response = await axios.post(`${backendUrl}/api/product/remove`, { headers: { token }, id });
             if (response.data.success) {
                 toast.success('Product deleted successfully');
                 // after delete the product from the list

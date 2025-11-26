@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Mail, Lock, Palette, LogIn } from 'lucide-react';
+import {backendUrl} from "../config/const";
 
 const Login = ({setToken}) => {
 
@@ -12,7 +13,7 @@ const Login = ({setToken}) => {
     const onSubmitHandler = async (e) => {
         try {
             e.preventDefault();
-            const response = await axios.post('http://localhost:4000/api/user/admin', {
+            const response = await axios.post(`${backendUrl}/api/user/admin`, {
                 email,
                 password
             });
@@ -114,7 +115,7 @@ const Login = ({setToken}) => {
 
                         {/* Submit Button */}
                         <button 
-                            className='group w-full py-4 bg-black hover:bg-[#1a1a1a] text-white font-light text-sm tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-3' 
+                            className='group w-full py-4 cursor-pointer bg-black hover:bg-[#1a1a1a] text-white font-light text-sm tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-3' 
                             type='submit'
                         >
                             <span>LOGIN</span>
