@@ -177,7 +177,8 @@ const ShopContextProvider = (props) => {
             }
         } catch (error) {
             console.log(error);
-            toast.error(error.message);
+            toast.error("Session expired. Please login again to continue");
+            navigate('/login');
         }
     }
 
